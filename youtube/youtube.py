@@ -11,4 +11,4 @@ def fetch_youtube_feed_entries():
 
 
 def download(video_id):
-    youtube.download(url=f'https://www.youtube.com/watch?v={video_id}', output_dir='.', merge=True)
+    youtube.download(url=f'https://www.youtube.com/watch?v={video_id}', output_dir='.', merge=True, caption=True)
