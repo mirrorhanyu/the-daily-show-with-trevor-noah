@@ -7,9 +7,7 @@ from os.path import basename
 
 
 def send_email(from_address, to_address, subject, text, attachments=None):
-    server = smtplib.SMTP(host='smtp.gmail.com', port=587)
-    server.ehlo()
-    server.starttls()
+    server = smtplib.SMTP_SSL(host='smtp.googlemail.com', port=465)
     server.login(os.getenv('GOOGLE_EMAIL_USERNAME', ''), os.getenv('GOOGLE_EMAIL_PASSWORD', ''))
 
     content = MIMEMultipart()
