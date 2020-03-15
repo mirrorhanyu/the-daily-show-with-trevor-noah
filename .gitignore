@@ -131,3 +131,5 @@ dmypy.json
 .pyre/
 
 .idea/
+
+google_drive_service_account.json
