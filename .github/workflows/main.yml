@@ -35,6 +35,7 @@ jobs:
           CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL }}
           GOOGLE_EMAIL_USERNAME: ${{ secrets.GOOGLE_EMAIL_USERNAME }}
           GOOGLE_EMAIL_PASSWORD: ${{ secrets.GOOGLE_EMAIL_PASSWORD }}
+          GOOGLE_NOTIFIED_EMAIL: ${{ secrets.GOOGLE_NOTIFIED_EMAIL }}
         run: |
           python main.py
 

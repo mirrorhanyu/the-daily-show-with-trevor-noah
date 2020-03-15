@@ -4,7 +4,7 @@ import xmltodict
 class YoutubeEntry:
     def __init__(self, youtube_entry):
         self.id = youtube_entry['id']
-        self.videoId = youtube_entry['yt:videoId']
+        self.video_id = youtube_entry['yt:videoId']
         self.title = youtube_entry['title']
         self.author = youtube_entry['author']['name']
         self.published = youtube_entry['published']
