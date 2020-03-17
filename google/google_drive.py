@@ -29,9 +29,20 @@ class GoogleDriveHelper:
         self.drive = GoogleDrive(auth)
 
     def upload(self, file_name, folder):
-        file = self.drive.CreateFile({"parents": [{"kind": "drive#fileLink", "id": folder}]})
+        file = self.drive.CreateFile({
+            'parents': [{'kind': 'drive#fileLink', 'id': folder}]
+        })
         file.SetContentFile(file_name)
         file.Upload()
+
+    def create_folder_inside(self, parent_folder, sub_folder_name):
+        folder = self.drive.CreateFile({
+            'title': sub_folder_name,
+            'parents': [{'id': parent_folder}],
+            "mimeType": "application/vnd.google-apps.folder"
+        })
+        folder.Upload()
+        return folder['id']
 
 
 google_drive = GoogleDriveHelper()
