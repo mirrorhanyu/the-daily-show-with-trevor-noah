@@ -5,6 +5,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
+# https://developers.google.com/drive/api/v2/reference/files#resource-representations
 
 class GoogleDriveHelper:
     def __init__(self):
@@ -28,10 +29,11 @@ class GoogleDriveHelper:
         auth.credentials = ServiceAccountCredentials.from_json_keyfile_name('google_drive_service_account.json', scope)
         self.drive = GoogleDrive(auth)
 
-    def upload(self, file_name, folder):
+    def upload(self, file_name, description, folder):
         file = self.drive.CreateFile({
-            'parents': [{'kind': 'drive#fileLink', 'id': folder}]
-        })
+            'description': description,
+            'parents': [{'kind': 'drive#fileLink', 'id': folder}]}
+        )
         file.SetContentFile(file_name)
         file.Upload()
 
