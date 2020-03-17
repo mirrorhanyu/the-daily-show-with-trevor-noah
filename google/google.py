@@ -5,11 +5,10 @@ from google.google_drive import google_drive
 from google.google_email import send_email
 
 
-def upload_files_to_drive_by(video_title):
+def upload_files_to_drive_by(entry):
     folder_id = '1vAn92qcBDwaZLc7dbqqdaqwSbszJw1cw'
     # title of downloaded video are 80 long, and without words after separator |
-    file_name = video_title.split(" | ")[0][:80]
-    for file in glob.glob(f'{file_name}*.*'):
+    for file in glob.glob(f'{entry.title_with_80_limit}*.*'):
         google_drive.upload(file, folder_id)
 
 

@@ -6,6 +6,7 @@ class YoutubeEntry:
         self.id = youtube_entry['id']
         self.video_id = youtube_entry['yt:videoId']
         self.title = youtube_entry['title']
+        self.title_with_80_limit = youtube_entry['title'].split(" | ")[0][:80]
         self.author = youtube_entry['author']['name']
         self.published = youtube_entry['published']
         self.updated = youtube_entry['updated']
