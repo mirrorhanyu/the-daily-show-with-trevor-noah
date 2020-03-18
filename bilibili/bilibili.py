@@ -12,7 +12,8 @@ source = 'http://www.youtube.com'
 
 def upload_files_to_bilibili(entry):
     title = entry.title_with_80_limit
-    video_path = next(path for path in glob.glob(f'{title}*.*') if is_video(path))
+    # video_path = next(path for path in glob.glob(f'{title}*.*') if is_video(path))
+    video_path = glob.glob(f'{title}*.webm')[0]
     bilibili_upload.upload(parts=[VideoPart(path=video_path, title=title, desc=entry.media_description)],
                            title=title,
                            tid=entertainment_video_type,
