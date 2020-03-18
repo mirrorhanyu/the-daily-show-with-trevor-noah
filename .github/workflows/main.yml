@@ -1,11 +1,8 @@
 name: hamal
 
 on:
-#  schedule:
-#    - cron:  '0 */4 * * *'
-  push:
-    branches:
-      - master
+  schedule:
+    - cron:  '0 */1 * * *'
 
 jobs:
   run:
