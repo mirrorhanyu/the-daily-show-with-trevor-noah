@@ -18,7 +18,7 @@ def upload_files_to_bilibili(entry):
                            title=title,
                            tid=entertainment_video_type,
                            tag=tags,
-                           desc=entry.media_description,
+                           desc=entry.media_description[:250],
                            source=source,
                            cover='',
                            dynamic='')
