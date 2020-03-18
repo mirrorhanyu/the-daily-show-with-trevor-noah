@@ -11,13 +11,22 @@ class YoutubeEntry:
         self.published = youtube_entry['published']
         self.updated = youtube_entry['updated']
         self.media_description = youtube_entry['media:group']['media:description']
-        self.details = f'''
-            title: {self.title}
-            author: {self.author}
-            published: {self.published}
-            updated: {self.updated}
-            description: {self.media_description}
+        self.google_drive_details = f'''
+            Title: {self.title}
+
+            Author: {self.author}
+
+            Published: {self.published}
+
+            Updated: {self.updated}
+
+            Description: {self.media_description}
         '''
+        self.bilibili_details = f'''
+            Title: {self.title}
+            
+            Description: {self.media_description}
+        '''[:250]
 
 
 class YoutubeFeed:
