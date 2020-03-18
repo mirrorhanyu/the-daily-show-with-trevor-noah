@@ -1,3 +1,5 @@
+from time import sleep
+
 from bilibili.bilibili import upload_files_to_bilibili
 from google.google import send_notify_email, upload_files_to_drive_by
 from utils.time_utils import is_within_hours
@@ -11,3 +13,5 @@ for entry in entries:
         upload_files_to_drive_by(entry)
         upload_files_to_bilibili(entry)
         send_notify_email(f'[Youtube Downloaded & Uploaded] - {entry.title}')
+        # sleep 30 seconds to avoid bilibili upload issue
+        sleep(30)
