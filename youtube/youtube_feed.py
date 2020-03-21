@@ -12,6 +12,8 @@ class YoutubeEntry:
         self.updated = youtube_entry['updated']
         self.media_description = youtube_entry['media:group']['media:description']
         self.google_drive_details = f'''
+            Id: {self.video_id}
+
             Title: {self.title}
 
             Author: {self.author}
