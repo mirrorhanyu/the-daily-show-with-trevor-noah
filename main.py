@@ -8,7 +8,7 @@ from youtube.youtube import fetch_youtube_feed_entries, download
 entries = fetch_youtube_feed_entries()
 
 for entry in entries:
-    if is_within_hours(entry.published, hours=4):
+    if is_within_hours(entry.published, hours=1):
         download(entry.video_id)
         upload_files_to_drive_by(entry)
         upload_files_to_bilibili(entry)
