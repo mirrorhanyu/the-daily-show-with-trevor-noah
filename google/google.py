@@ -8,9 +8,8 @@ daily_show_folder_id = '1vAn92qcBDwaZLc7dbqqdaqwSbszJw1cw'
 
 
 def upload_files_to_drive_by(entry):
-    # title of downloaded video are 80 long, and without words after separator |
     folder = google_drive.create_folder_inside(parent_folder=daily_show_folder_id, sub_folder_name=entry.title)
-    for file in glob.glob(f'{entry.title_with_80_limit}*.*'):
+    for file in glob.glob('download/*'):
         google_drive.upload(file_name=file, description=entry.google_drive_details, folder=folder)
 
 
