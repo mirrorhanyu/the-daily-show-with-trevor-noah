@@ -133,3 +133,5 @@ dmypy.json
 .idea/
 
 google_drive_service_account.json
+
+download/
