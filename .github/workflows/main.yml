@@ -10,7 +10,7 @@ on:
 jobs:
   run:
     name: run
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         python-version: [3.8]
@@ -22,11 +22,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install wget
-          sudo apt-get install ffmpeg
-          sudo apt-get install imagemagick
-          sudo sed -i "/@*/d" /etc/ImageMagick-6/policy.xml
+          brew update
+          brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
+          brew install imagemagick
           python -m pip install --upgrade pip
           pip install virtualenv
       - name: Run
