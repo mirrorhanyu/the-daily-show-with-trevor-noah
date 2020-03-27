@@ -9,7 +9,7 @@ from utils.file_utils import add_prefix_to_filename
 
 
 def add_subtitle(video_path, subtitle_path, filename=None):
-    generator: Callable[[Any], TextClip] = lambda txt: TextClip(txt, font='../assets/font/GothamMedium.ttf',
+    generator: Callable[[Any], TextClip] = lambda txt: TextClip(txt, font='GothamMedium.ttf',
                                                                 fontsize=35, color='white',
                                                                 bg_color='#00000066')
     subtitle = SubtitlesClip(subtitle_path, generator).margin(bottom=15, opacity=0).set_position(('center', 'bottom'))
