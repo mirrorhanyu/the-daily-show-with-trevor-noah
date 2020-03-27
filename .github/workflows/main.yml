@@ -1,11 +1,11 @@
 name: hamal
 
 on:
-  schedule:
-    - cron:  '0 */1 * * *'
-#  push:
-#    branches:
-#      - master
+#  schedule:
+#    - cron:  '0 */1 * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   run:
@@ -23,7 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          sudo apt-get install wget
           sudo apt-get install ffmpeg
+          sudo apt-get install imagemagick
+          sudo sed -i "/@*/d" /etc/ImageMagick-6/policy.xml
           python -m pip install --upgrade pip
           pip install virtualenv
       - name: Run
