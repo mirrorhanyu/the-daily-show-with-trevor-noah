@@ -15,7 +15,7 @@ def add_subtitle(video_path, subtitle_path, filename=None):
     subtitle = SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom'))
     video = VideoFileClip(video_path, audio=True)
     composed_video = CompositeVideoClip([video, subtitle])
-    composed_video.write_videofile(filename or add_prefix_to_filename(video_path, '[with-subtitle] '),
+    composed_video.write_videofile(filename or add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '),
                                    threads=4,
                                    fps=video.fps,
                                    temp_audiofile="temp-audio.m4a",

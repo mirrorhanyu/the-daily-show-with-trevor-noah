@@ -23,3 +23,7 @@ def remove_folder(path):
 def add_prefix_to_filename(path, prefix):
     file_path, filename_with_extension = os.path.split(path)
     return os.path.join(file_path, f'{prefix}{filename_with_extension}')
+
+
+def get_filename(path):
+    return os.path.basename(path)
