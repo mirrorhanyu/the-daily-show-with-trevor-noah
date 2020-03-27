@@ -31,6 +31,7 @@ class GoogleDriveHelper:
 
     def upload(self, file_name, description, folder):
         file = self.drive.CreateFile({
+            'title': os.path.basename(file_name),
             'description': description,
             'parents': [{'kind': 'drive#fileLink', 'id': folder}]}
         )

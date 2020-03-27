@@ -11,7 +11,7 @@ daily_show_folder_id = '1vAn92qcBDwaZLc7dbqqdaqwSbszJw1cw'
 def upload_files_to_drive_by(entry):
     folder = google_drive.create_folder_inside(parent_folder=daily_show_folder_id, sub_folder_name=entry.title)
     for file in glob.glob('download/*'):
-        google_drive.upload(file_name=get_filename(file), description=entry.google_drive_details, folder=folder)
+        google_drive.upload(file_name=file, description=entry.google_drive_details, folder=folder)
 
 
 def send_notify_email(subject):
