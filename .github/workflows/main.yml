@@ -23,11 +23,13 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
+          brew install ffmpeg
           brew install imagemagick
-          brew list --versions
           python -m pip install --upgrade pip
           pip install virtualenv
+      - name: Show dependencies
+        run: |
+          brew list --versions
       - name: Run
         env:
           TYPE: ${{ secrets.TYPE }}

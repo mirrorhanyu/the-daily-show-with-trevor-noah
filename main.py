@@ -17,7 +17,7 @@ from utils.time_utils import is_within_hours
 from youtube.youtube import fetch_youtube_feed_entries, download
 
 for entry in fetch_youtube_feed_entries():
-    if is_within_hours(entry.published, hours=8):
+    if is_within_hours(entry.published, hours=12):
         download(entry.video_id)
         # generate_video_with_subtitle()
         # upload_files_to_drive_by(entry)
@@ -37,7 +37,4 @@ for entry in fetch_youtube_feed_entries():
         composed_video = CompositeVideoClip([video, subtitle])
         composed_video.write_videofile(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '),
                                        threads=4,
-                                       fps=video.fps,
-                                       temp_audiofile="temp-audio.m4a",
-                                       remove_temp=True,
-                                       audio_codec="aac")
+                                       fps=video.fps)
