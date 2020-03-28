@@ -25,5 +25,11 @@ def add_prefix_to_filename(path, prefix):
     return os.path.join(file_path, f'{prefix}{filename_with_extension}')
 
 
+def replace_extension(path, extension):
+    file_path, filename_with_extension = os.path.split(path)
+    filename = os.path.splitext(filename_with_extension)[0]
+    return os.path.join(file_path, f'{filename}{extension}')
+
+
 def get_filename(path):
     return os.path.basename(path)
