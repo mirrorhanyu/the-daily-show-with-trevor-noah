@@ -32,7 +32,7 @@ for entry in fetch_youtube_feed_entries():
                                                                     font='./video/GothamMedium.ttf',
                                                                     fontsize=35, color='white',
                                                                     bg_color='#00000066')
-        subtitle = SubtitlesClip(subtitle_path, generator).margin(bottom=15, opacity=0).set_position(('center', 'bottom'))
+        subtitle = SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom'))
         video = VideoFileClip(video_path, audio=True)
         composed_video = CompositeVideoClip([video, subtitle])
         composed_video.write_videofile(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '),
