@@ -23,11 +23,6 @@ class YoutubeEntry:
 
             Description: {self.media_description}
         '''
-        self.bilibili_details = f'''
-            Title: {self.title}
-            
-            Description: {self.media_description}
-        '''[:250]
 
 
 class YoutubeFeed:
