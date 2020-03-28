@@ -5,22 +5,25 @@ from oauth2client.service_account import ServiceAccountCredentials
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
+from settings import settings
+
+
 # https://developers.google.com/drive/api/v2/reference/files#resource-representations
 
 class GoogleDriveHelper:
     def __init__(self):
         if not os.path.exists('google_drive_service_account.json'):
             credential = {
-                "type": os.getenv('TYPE', ''),
-                "project_id": os.getenv('PROJECT_ID', ''),
-                "private_key_id": os.getenv('PRIVATE_KEY_ID', ''),
-                "private_key": os.getenv('PRIVATE_KEY', ''),
-                "client_email": os.getenv('CLIENT_EMAIL', ''),
-                "client_id": os.getenv('CLIENT_ID', ''),
-                "auth_uri": os.getenv('AUTH_URI', ''),
-                "token_uri": os.getenv('TOKEN_URI', ''),
-                "auth_provider_x509_cert_url": os.getenv('AUTH_PROVIDER_X509_CERT_URL', ''),
-                "client_x509_cert_url": os.getenv('CLIENT_X509_CERT_URL', '')
+                "type": settings.TYPE,
+                "project_id": settings.PROJECT_ID,
+                "private_key_id": settings.PRIVATE_KEY_ID,
+                "private_key": settings.PRIVATE_KEY,
+                "client_email": settings.CLIENT_EMAIL,
+                "client_id": settings.CLIENT_ID,
+                "auth_uri": settings.AUTH_URI,
+                "token_uri": settings.TOKEN_URI,
+                "auth_provider_x509_cert_url": settings.AUTH_PROVIDER_X509_CERT_URL,
+                "client_x509_cert_url": settings.CLIENT_X509_CERT_URL
             }
             with open('google_drive_service_account.json', 'w') as file:
                 json.dump(credential, file, indent=2)

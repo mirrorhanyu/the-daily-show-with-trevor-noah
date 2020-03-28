@@ -1,9 +1,8 @@
-import os
 import glob
 
 from google.google_drive import google_drive
 from google.google_email import send_email
-from utils.file_utils import get_filename
+from settings import settings
 
 daily_show_folder_id = '1vAn92qcBDwaZLc7dbqqdaqwSbszJw1cw'
 
@@ -15,7 +14,7 @@ def upload_files_to_drive_by(entry):
 
 
 def send_notify_email(subject):
-    send_email(from_address= os.getenv('GOOGLE_EMAIL_USERNAME'),
-               to_address=os.getenv('GOOGLE_NOTIFIED_EMAIL'),
+    send_email(from_address=settings.GOOGLE_EMAIL_USERNAME,
+               to_address=settings.GOOGLE_NOTIFIED_EMAIL,
                subject=subject,
                text='Done!')

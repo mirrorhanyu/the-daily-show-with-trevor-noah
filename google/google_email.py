@@ -1,14 +1,15 @@
-import os
 import smtplib
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from os.path import basename
 
+from settings import settings
+
 
 def send_email(from_address, to_address, subject, text, attachments=None):
     server = smtplib.SMTP_SSL(host='smtp.googlemail.com', port=465)
-    server.login(os.getenv('GOOGLE_EMAIL_USERNAME', ''), os.getenv('GOOGLE_EMAIL_PASSWORD', ''))
+    server.login(settings.GOOGLE_EMAIL_USERNAME, settings.GOOGLE_EMAIL_PASSWORD)
 
     content = MIMEMultipart()
     content['From'] = from_address
