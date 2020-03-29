@@ -14,7 +14,7 @@ def add_subtitle(video_path, subtitle_path, filename=None):
                                                                 font='assets/font/GothamMedium.ttf',
                                                                 fontsize=35, color='white',
                                                                 bg_color='#00000066')
-    subtitle = margin(clip=SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom')), bottom=15, opacity=0)
+    subtitle = margin(clip=SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom')), bottom=25, opacity=0)
     video = VideoFileClip(video_path, audio=True)
     composed_video = CompositeVideoClip([video, subtitle])
     output_filename = filename or replace_extension(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '), '.mp4')
