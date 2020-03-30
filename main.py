@@ -8,7 +8,7 @@ from video.video import generate_video_with_subtitle
 from youtube.youtube import fetch_youtube_feed_entries, download
 
 for entry in fetch_youtube_feed_entries():
-    if is_within_hours(entry.published, hours=23):
+    if is_within_hours(entry.published, hours=0.5):
         download(entry.video_id)
         generate_video_with_subtitle()
         upload_files_to_drive_by(entry)
