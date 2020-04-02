@@ -2,7 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 
 def is_within_hours(iso_datetime, hours=1):
-    return datetime.fromisoformat(iso_datetime) + timedelta(hours=hours) >= round_down_to_half_hour(datetime.now(timezone.utc))
+    return round_down_to_half_hour(datetime.now(timezone.utc)) + timedelta(minutes=30) > datetime.fromisoformat(iso_datetime) + timedelta(hours=hours) >= round_down_to_half_hour(datetime.now(timezone.utc))
 
 
 def round_down_to_half_hour(date_time: datetime):

@@ -7,10 +7,10 @@ from utils.time_utils import is_within_hours
 from video.video import generate_video_with_subtitle
 from youtube.youtube import fetch_youtube_feed_entries, download
 
-ENOUGH_HOURS_TO_WAIT_FOR_YOUTUBE_SUBTITLE = 6.5
+ENOUGH_HOURS_TO_WAIT_FOR_YOUTUBE_SUBTITLE = 6
 
 latest_youtube_entries = [entry for entry in fetch_youtube_feed_entries() if is_within_hours(entry.published, hours=ENOUGH_HOURS_TO_WAIT_FOR_YOUTUBE_SUBTITLE)]
-for entry in latest_youtube_entries:
+for entry in reversed(latest_youtube_entries):
     download(entry.video_id)
     generate_video_with_subtitle()
     upload_files_to_drive_by(entry)
