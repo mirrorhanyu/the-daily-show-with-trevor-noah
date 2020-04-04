@@ -10,7 +10,7 @@ on:
 jobs:
   run:
     name: run
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
@@ -22,15 +22,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install ffmpeg
+          sudo apt-get install imagemagick
+          sudo sed -i "/@*/d" /etc/ImageMagick-6/policy.xml
           python -m pip install --upgrade pip
           pip install virtualenv
-          brew update
-          brew install ffmpeg
-          brew install imagemagick
-      - name: Show dependencies
-        run: |
-          python --version
-          brew list --versions
       - name: Run
         env:
           TYPE: ${{ secrets.TYPE }}
@@ -53,9 +50,4 @@ jobs:
           source env/bin/activate
           pip install -r requirements.txt
           python main.py
-#      - name: Archive artifacts
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: download
-#          path: download
 
