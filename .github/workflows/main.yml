@@ -10,24 +10,16 @@ on:
 jobs:
   run:
     name: run
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install ffmpeg
-          sudo apt-get install imagemagick
-          sudo sed -i "/@*/d" /etc/ImageMagick-6/policy.xml
-          python -m pip install --upgrade pip
-          pip install virtualenv
+          brew update
+          brew install ffmpeg
+          brew install imagemagick
+          brew reinstall python
+          pip3 install virtualenv
       - name: Run
         env:
           TYPE: ${{ secrets.TYPE }}
@@ -46,7 +38,7 @@ jobs:
           BILIBILI_USERNAME: ${{ secrets.BILIBILI_USERNAME }}
           BILIBILI_PASSWORD: ${{ secrets.BILIBILI_PASSWORD }}
         run: |
-          virtualenv env
+          virtualenv --python=python3 env
           source env/bin/activate
           pip install -r requirements.txt
           python main.py
