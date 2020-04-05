@@ -12,6 +12,9 @@ jobs:
     name: run
     runs-on: macos-latest
     steps:
+      - name: Show IP
+        run: |
+          curl https://httpbin.org/ip
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
