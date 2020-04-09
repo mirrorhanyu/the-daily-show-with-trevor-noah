@@ -19,5 +19,5 @@ def add_subtitle(video_path, subtitle_path, filename=None):
     composed_video = CompositeVideoClip([video, subtitle])
     output_filename = filename or replace_extension(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '), '.mp4')
     composed_video.write_videofile(output_filename,
-                                   threads=4,
+                                   threads=2,
                                    fps=video.fps)
