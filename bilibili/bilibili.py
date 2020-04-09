@@ -1,4 +1,5 @@
 import glob
+import re
 
 from bilibiliupload import VideoPart
 
@@ -11,7 +12,7 @@ source = 'http://www.youtube.com'
 
 
 def upload_files_to_bilibili(entry):
-    title = f'#崔娃每日秀# {entry.title}'.split(" | ")[0][:80]
+    title = respect_to_trump(f'#崔娃每日秀# {entry.title}'.split(" | ")[0])[:80]
     description = entry.media_description.split('#DailyShow')[0][:250]
     video_paths = [path for path in glob.glob('download/*') if is_video(path)]
     video_to_be_uploaded = next((path for path in video_paths if '[WITH-SUBTITLE]' in path), video_paths[0])
@@ -23,3 +24,8 @@ def upload_files_to_bilibili(entry):
                            source=source,
                            cover='',
                            dynamic='')
+
+
+def respect_to_trump(title):
+    trump = re.compile(re.escape('trump'), re.IGNORECASE)
+    return trump.sub('川建国', title)
