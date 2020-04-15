@@ -4,7 +4,7 @@ from google.google_drive import google_drive
 from google.google_email import send_email
 from settings import settings
 
-daily_show_folder_id = '1vAn92qcBDwaZLc7dbqqdaqwSbszJw1cw'
+daily_show_folder_id = '1Ghgv4WWsm330PXBC0OJ5GxRdVjfQ9afZ'
 
 
 def upload_files_to_drive_by(entry):

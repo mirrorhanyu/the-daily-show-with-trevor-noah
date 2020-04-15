@@ -1,11 +1,11 @@
 name: hamal
 
 on:
-  schedule:
-    - cron:  '0,30 * * * *'
-#  push:
-#    branches:
-#      - master
+#  schedule:
+#    - cron:  '0,30 * * * *'
+  push:
+    branches:
+      - experiment
 
 jobs:
   run:
