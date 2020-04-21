@@ -6,7 +6,7 @@ from utils.file_utils import remove_folder
 from video.video import generate_video_with_subtitle
 from youtube.youtube import fetch_youtube_feed_entries, download
 
-missed_video_ids = ['oTCHGooLdGA', 'dyMSTujWW2I', 'kPx-OSYR92g', 'QlwDhjOmg4I', 'rVQUxB7M0nA']
+missed_video_ids = ['kAetmJDVwCc', 'ZNOMfkVtaV0', 'pvDXtJBwXAM', 'MNLohAG90w4', 'rzJHj4hDd30']
 
 latest_youtube_entries = [entry for entry in fetch_youtube_feed_entries() if entry.video_id in missed_video_ids]
 for entry in reversed(latest_youtube_entries):
