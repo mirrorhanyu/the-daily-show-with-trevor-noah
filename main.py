@@ -6,7 +6,7 @@
 from video.video import generate_video_with_subtitle
 from youtube.youtube import fetch_youtube_feed_entries, download
 
-missed_video_ids = ['-z-uGIt0f4E']
+missed_video_ids = ['8Y0GWvJgmxk']
 
 latest_youtube_entries = [entry for entry in fetch_youtube_feed_entries() if entry.video_id in missed_video_ids]
 for entry in reversed(latest_youtube_entries):
