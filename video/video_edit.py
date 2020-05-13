@@ -18,6 +18,6 @@ def add_subtitle(video_path, subtitle_path, filename=None):
     video = VideoFileClip(video_path, audio=True)
     composed_video = CompositeVideoClip([video, subtitle])
     output_filename = filename or replace_extension(add_prefix_to_filename(video_path, '[WITH-SUBTITLE] '), '.mp4')
-    composed_video.write_videofile(output_filename,
+    composed_video.write_videofile(output_filename.replace('?', ''),
                                    threads=2,
                                    fps=video.fps)
