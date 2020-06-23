@@ -3,7 +3,7 @@ import re
 
 from bilibiliupload import VideoPart
 
-from bilibili.bilibili_upload import bilibili_upload
+from bilibili.bilibili_upload import get_bilibili_upload
 from utils.file_utils import is_video
 
 entertainment_video_type = 71
@@ -12,6 +12,7 @@ source = 'http://www.youtube.com'
 
 
 def upload_files_to_bilibili(entry):
+    bilibili_upload = get_bilibili_upload()
     title = respect_to_trump(f'#崔娃每日秀# {entry.title}'.split(" | ")[0])[:80]
     description = entry.media_description.split('#DailyShow')[0][:250]
     video_paths = [path for path in glob.glob('download/*') if is_video(path)]
