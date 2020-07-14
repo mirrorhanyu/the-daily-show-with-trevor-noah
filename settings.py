@@ -16,8 +16,7 @@ class Settings:
         self.GOOGLE_EMAIL_USERNAME = os.getenv('GOOGLE_EMAIL_USERNAME', '')
         self.GOOGLE_EMAIL_PASSWORD = os.getenv('GOOGLE_EMAIL_PASSWORD', '')
         self.GOOGLE_NOTIFIED_EMAIL = os.getenv('GOOGLE_NOTIFIED_EMAIL', '')
-        self.BILIBILI_USERNAME = os.getenv('BILIBILI_USERNAME', '')
-        self.BILIBILI_PASSWORD = os.getenv('BILIBILI_PASSWORD', '')
+        self.BILIBILI_COOKIE = os.getenv('BILIBILI_COOKIE', '')
 
 
 settings = Settings()
