@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/279ca1411bf9e5a7490135f67910fe3bdb2b38f8/Formula/ffmpeg.rb
-          brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f6d50073dcfcbe85ec52bf25fbcbd2a63102699d/Formula/imagemagick.rb
+          brew install ffmpeg
+          brew install imagemagick
           brew reinstall python
           pip3 install virtualenv
       - name: Run
