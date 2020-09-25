@@ -19,9 +19,9 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install ffmpeg
+          brew install ffmpeg 
           brew install imagemagick
-          brew reinstall python
+          brew reinstall python@3.7
           pip3 install virtualenv
       - name: Run
         env:
