@@ -3,9 +3,9 @@ name: hamal
 on:
   schedule:
     - cron:  '0,30 * * * *'
-#  push:
-#    branches:
-#      - master
+  push:
+    branches:
+      - master
 
 jobs:
   run:
@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install ffmpeg 
+          brew install ffmpeg
           brew install imagemagick
           brew reinstall python@3.7
           pip3 install virtualenv
