@@ -15,7 +15,7 @@ with youtube_dl.YoutubeDL({
     'outtmpl': 'youtube-download-file',
     'writesubtitles': True,
     'subtitlesformat': 'srt',
-    'subtitle': '--write-sub --convert-subtitles srt --sub-lang en',
+    'subtitle': '--write-srt --sub-lang en',
 }) as ydl:
     ydl.download([f'https://www.youtube.com/watch?v={entries[2].video_id}'])
     video_path = 'youtube-download-file'
