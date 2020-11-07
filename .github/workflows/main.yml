@@ -10,44 +10,23 @@ on:
 jobs:
   run:
     name: run
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Show IP
-        run: |
-          curl https://httpbin.org/ip
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          brew update
-          brew install ffmpeg
-          brew install imagemagick
-          brew reinstall python
-          pip3 install virtualenv
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: docker build -t the-daily-show-with-trevor-noah .
       - name: Run
-        env:
-          TYPE: ${{ secrets.TYPE }}
-          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          PRIVATE_KEY_ID: ${{ secrets.PRIVATE_KEY_ID }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          CLIENT_EMAIL: ${{ secrets.CLIENT_EMAIL }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          AUTH_URI: ${{ secrets.AUTH_URI }}
-          TOKEN_URI: ${{ secrets.TOKEN_URI }}
-          AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.AUTH_PROVIDER_X509_CERT_URL }}
-          CLIENT_X509_CERT_URL: ${{ secrets.CLIENT_X509_CERT_URL }}
-          GOOGLE_EMAIL_USERNAME: ${{ secrets.GOOGLE_EMAIL_USERNAME }}
-          GOOGLE_EMAIL_PASSWORD: ${{ secrets.GOOGLE_EMAIL_PASSWORD }}
-          GOOGLE_NOTIFIED_EMAIL: ${{ secrets.GOOGLE_NOTIFIED_EMAIL }}
-          BILIBILI_USERNAME: ${{ secrets.BILIBILI_USERNAME }}
-          BILIBILI_PASSWORD: ${{ secrets.BILIBILI_PASSWORD }}
-        run: |
-          virtualenv --python=python3 env
-          source env/bin/activate
-          pip install -r requirements.txt
-          python main.py
-      - name: Archive artifacts
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 15
+          retry_wait_seconds: 300
+          max_attempts: 3
+          retry_on: any
+          command: docker run --name han the-daily-show-with-trevor-noah && mkdir download && docker cp han:/app download
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: download
-          path: .
+          name: artifacts
+          path: download
 
