@@ -1,3 +1,5 @@
+import glob
+
 import youtube_dl
 from moviepy.video.VideoClip import TextClip
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
@@ -17,7 +19,7 @@ with youtube_dl.YoutubeDL({
 }) as ydl:
     ydl.download([f'https://www.youtube.com/watch?v={entries[2].video_id}'])
     video_path = 'youtube-download-file'
-    subtitle_path = 'youtube-download-file.en.srt'
+    subtitle_path = next((path for path in glob.glob('youtube-download-file.en*.*')), None)
     generator = lambda txt: TextClip(txt,
                                      font='assets/font/GothamMedium.ttf',
                                      fontsize=45, color='white', bg_color='#00000066')
