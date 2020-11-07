@@ -15,15 +15,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: docker build -t the-daily-show-with-trevor-noah .
+        run: docker build -t the-daily-show .
       - name: Run
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 15
-          retry_wait_seconds: 300
-          max_attempts: 3
-          retry_on: any
-          command: docker run --name han the-daily-show-with-trevor-noah && mkdir download && docker cp han:/app download
+        run: docker run --name han the-daily-show && mkdir download && docker cp han:/app download
       - name: Upload Artifacts
         uses: actions/upload-artifact@v1
         with:
