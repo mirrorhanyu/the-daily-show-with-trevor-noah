@@ -20,6 +20,7 @@ with youtube_dl.YoutubeDL({
     ydl.download([f'https://www.youtube.com/watch?v={entries[2].video_id}'])
     video_path = 'youtube-download-file'
     subtitle_path = next((path for path in glob.glob('youtube-download-file.en*.*')), None)
+    print('subtitle_path', subtitle_path)
     generator = lambda txt: TextClip(txt,
                                      font='assets/font/GothamMedium.ttf',
                                      fontsize=45, color='white', bg_color='#00000066')
