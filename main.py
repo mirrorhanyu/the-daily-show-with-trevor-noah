@@ -7,7 +7,7 @@ from moviepy.video.fx.margin import margin
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.tools.subtitles import SubtitlesClip
 
-from env.bin.vtt_to_srt import vtt_to_srt
+from libs.vtt_to_srt import vtt_to_srt
 from utils.file_utils import is_vtt_subtitle
 from youtube.youtube import fetch_youtube_feed_entries
 
