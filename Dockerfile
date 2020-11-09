@@ -8,6 +8,8 @@ COPY . .
 
 RUN apt-get update && apt-get install -y imagemagick
 
+RUN sed -i "/@*/d" /etc/ImageMagick-6/policy.xml
+
 RUN ["chmod", "+x", "./docker-entrypoint.sh"]
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
