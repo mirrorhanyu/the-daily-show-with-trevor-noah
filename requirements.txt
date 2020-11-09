@@ -1,6 +1,6 @@
 xmltodict==0.12.0
 requests==2.23.0
 bilibiliupload==0.2.3
-youtube_dl==2020.11.1.1
 moviepy==1.0.3
-vtt-to-srt3==0.1.8.4
+you-get==0.4.1475
+python-magic==0.4.18
