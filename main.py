@@ -28,8 +28,7 @@ with youtube_dl.YoutubeDL({
     generator = lambda txt: TextClip(txt,
                                      font='assets/font/GothamMedium.ttf',
                                      fontsize=45, color='white', bg_color='#00000066')
-    subtitle = margin(clip=SubtitlesClip(subtitle_path, generator)
-                      .set_position(('center', 'bottom')), bottom=35, opacity=0)
+    subtitle = clip=SubtitlesClip(subtitle_path, generator).set_position(('center', 'bottom'))
     video = VideoFileClip(video_path, audio=True)
     composed_video = CompositeVideoClip([video, subtitle])
     output_filename = 'youtube-output-file'
