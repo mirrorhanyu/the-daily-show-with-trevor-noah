@@ -7,6 +7,8 @@ from moviepy.video.fx.margin import margin
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.tools.subtitles import SubtitlesClip
 
+from env.bin.vtt_to_srt import vtt_to_srt
+from utils.file_utils import is_vtt_subtitle
 from youtube.youtube import fetch_youtube_feed_entries
 
 entries = fetch_youtube_feed_entries()
@@ -15,12 +17,14 @@ with youtube_dl.YoutubeDL({
     'outtmpl': 'youtube-download-file',
     'writesubtitles': True,
     'subtitlesformat': 'srt',
-    'subtitle': '--write-srt --sub-lang en',
+    'subtitle': '--sub-lang en --write-sub --convert-subs srt',
 }) as ydl:
     ydl.download([f'https://www.youtube.com/watch?v={entries[2].video_id}'])
     video_path = 'youtube-download-file'
-    subtitle_path = next((path for path in glob.glob('youtube-download-file.en*.*')), None)
-    print('subtitle_path', subtitle_path)
+    subtitle_path = next((path for path in glob.glob('youtube-download-file.en.*')), None)
+    if is_vtt_subtitle(subtitle_path):
+        vtt_to_srt(subtitle_path)
+        subtitle_path = 'youtube-download-file.en.srt'
     generator = lambda txt: TextClip(txt,
                                      font='assets/font/GothamMedium.ttf',
                                      fontsize=45, color='white', bg_color='#00000066')

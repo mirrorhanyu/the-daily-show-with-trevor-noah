@@ -1,12 +1,6 @@
 import os
 import shutil
 
-import magic
-
-
-def is_video(path):
-    return False if not file_exist(path) else 'video' in magic.from_file(path, mime=True)
-
 
 def is_subtitle(path):
     return False if not file_exist(path) else os.path.splitext(path)[1] in ['.srt']
@@ -29,6 +23,12 @@ def replace_extension(path, extension):
     file_path, filename_with_extension = os.path.split(path)
     filename = os.path.splitext(filename_with_extension)[0]
     return os.path.join(file_path, f'{filename}{extension}')
+
+
+def is_vtt_subtitle(path):
+    file_path, filename_with_extension = os.path.split(path)
+    extension = os.path.splitext(filename_with_extension)[1]
+    return extension == '.vtt'
 
 
 def get_filename(path):
