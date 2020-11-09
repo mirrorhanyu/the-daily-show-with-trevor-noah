@@ -23,5 +23,5 @@ subtitle = margin(clip=SubtitlesClip(subtitle_path, generator)
                   .set_position(('center', 'bottom')), bottom=35, opacity=0)
 video = VideoFileClip(video_path, audio=True)
 composed_video = CompositeVideoClip([video, subtitle])
-output_filename = 'youtube-output-file'
+output_filename = 'youtube-output-file.mp4'
 composed_video.write_videofile(output_filename, threads=2, fps=video.fps)
